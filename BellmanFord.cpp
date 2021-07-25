@@ -3,19 +3,19 @@
 #include <tuple>
 using namespace std;
 
+const int N = 5;
 const int INF = 987654321;
 vector<tuple<int, int, int>> edges;
-int n = 5;
-int dist[5];
+int dist[N];
 
 void BellmanFord(int x)
 {
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < N; ++i)
     {
         dist[i] = INF;
     }
     dist[x] = 0;
-    for (int i = 0; i < n - 1; ++i)
+    for (int i = 0; i < N - 1; ++i)
     {
         bool finished_check = true; //거리 변화있으면 finished_check = false;
         for (auto e : edges)
@@ -52,7 +52,7 @@ int main(void)
     edges.push_back({4, 3, 2});
     BellmanFord(0);
     cout << "BellmanFord" << endl;
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < N; ++i)
     {
         cout << dist[i] << ' ';
     }
