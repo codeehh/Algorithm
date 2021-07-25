@@ -3,16 +3,16 @@
 #include <queue>
 using namespace std;
 
+const int N = 5;
 const int INF = 987654321;
-vector<pair<int, int>> adj[5];
+vector<pair<int, int>> adj[N];
 priority_queue<pair<int, int>> pq;
-int n = 5;
-int dist[5];
-int determined[5] = {false};
+int dist[N];
+int determined[N] = {false};
 
 void Dijkstra(int x)
 {
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < N; ++i)
     {
         dist[i] = INF;
     }
@@ -57,7 +57,7 @@ int main(void)
     adj[4].push_back({3, 2});
     Dijkstra(0);
     cout << "Dijkstra" << endl;
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < N; ++i)
     {
         cout << dist[i] << ' ';
     }
