@@ -95,9 +95,7 @@ int main(void)
     edges.push_back({5, 4, 2});
 
     sort(edges.begin(), edges.end(), Cmp());
-    cout << endl;
     Kruskal(edges, min_span_tree, uf);
     ShowMST(min_span_tree);
-    cout << endl;
     return 0;
 }
