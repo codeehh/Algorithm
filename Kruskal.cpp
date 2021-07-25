@@ -3,7 +3,9 @@
 #include <algorithm>
 #include <tuple>
 using namespace std;
-const int NUM_NODES = 6;
+
+const int N = 6;
+
 //tuple 비교함수
 struct Cmp
 {
@@ -16,11 +18,11 @@ struct Cmp
 //Union-find 자료구조
 struct Union_find
 {
-    int link[NUM_NODES];
-    int size[NUM_NODES];
+    int link[N];
+    int size[N];
     Union_find()
     {
-        for (int i = 0; i < NUM_NODES; ++i)
+        for (int i = 0; i < N; ++i)
         {
             link[i] = i;
             size[i] = 1;
@@ -52,6 +54,7 @@ struct Union_find
         size[a] += size[b];
     }
 };
+
 void Kruskal(const vector<tuple<int, int, int>> &edges, vector<pair<int, int>> &min_span_tree, Union_find &uf)
 {
     for (auto x : edges)
@@ -65,13 +68,16 @@ void Kruskal(const vector<tuple<int, int, int>> &edges, vector<pair<int, int>> &
         }
     }
 }
+
 void ShowMST(const vector<pair<int, int>> &min_span_tree)
 {
+    cout << "Kruskal" << endl;
     for (auto x : min_span_tree)
     {
         cout << x.first << ' ' << x.second << endl;
     }
 }
+
 int main(void)
 {
     vector<tuple<int, int, int>> edges;
@@ -97,5 +103,6 @@ int main(void)
     sort(edges.begin(), edges.end(), Cmp());
     Kruskal(edges, min_span_tree, uf);
     ShowMST(min_span_tree);
+
     return 0;
 }
