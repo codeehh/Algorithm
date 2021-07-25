@@ -2,15 +2,15 @@
 #include <vector>
 using namespace std;
 
+const int N = 5;
 const int INF = 987654321;
-int dist[5][5];
-int n = 5;
+int dist[N][N];
 
-void FloydWarshall(int adj[][5])
+void FloydWarshall(int adj[][N])
 {
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < N; ++i)
     {
-        for (int j = 0; j < 5; ++j)
+        for (int j = 0; j < N; ++j)
         {
             if (i == j)
                 dist[i][j] = 0;
@@ -20,11 +20,11 @@ void FloydWarshall(int adj[][5])
                 dist[i][j] = INF;
         }
     }
-    for (int k = 0; k < n; ++k)
+    for (int k = 0; k < N; ++k)
     {
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < N; ++i)
         {
-            for (int j = 0; j < n; ++j)
+            for (int j = 0; j < N; ++j)
             {
                 dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
             }
@@ -34,16 +34,16 @@ void FloydWarshall(int adj[][5])
 
 int main(void)
 {
-    int adj[5][5] = {{0, 2, 3, 7, 0},
+    int adj[N][N] = {{0, 2, 3, 7, 0},
                      {2, 0, 0, 3, 5},
                      {3, 0, 0, 1, 0},
                      {7, 3, 1, 0, 2},
                      {0, 5, 0, 2, 0}};
     FloydWarshall(adj);
     cout << "FloydWarshall" << endl;
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < N; ++i)
     {
-        for (int j = 0; j < n; ++j)
+        for (int j = 0; j < N; ++j)
         {
             cout << dist[i][j] << ' ';
         }
