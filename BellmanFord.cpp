@@ -17,7 +17,7 @@ void BellmanFord(int x)
     dist[x] = 0;
     for (int i = 0; i < n - 1; ++i)
     {
-        bool finished_check = true; //1라운드에서 거리 변화있으면 finished_check = false;
+        bool finished_check = true; //거리 변화있으면 finished_check = false;
         for (auto e : edges)
         {
             int a, b, w;
