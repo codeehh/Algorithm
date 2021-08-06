@@ -7,24 +7,23 @@ const int N = 5;
 vector<int> adj[N];
 bool visited[N] = {false};
 int dist[N];
-void bfs(int node)
+void bfs(int first_node)
 {
     queue<int> q;
-    cout << node << ' ';
-    visited[node] = true;
-    dist[node] = 0;
-    q.push(node);
-
+    dist[first_node] = 0;
+    q.push(first_node);
     while (!q.empty())
     {
         int now_node = q.front();
         q.pop();
+        if (visited[now_node])
+            continue;
+        visited[now_node] = true;
+        cout << now_node << ' ';
         for (auto x : adj[now_node])
         {
             if (visited[x])
                 continue;
-            cout << x << ' ';
-            visited[x] = true;
             dist[x] = dist[now_node] + 1;
             q.push(x);
         }
