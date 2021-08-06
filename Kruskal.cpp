@@ -73,9 +73,7 @@ void ShowMST(const vector<pair<int, int>> &min_span_tree)
 {
     cout << "Kruskal" << endl;
     for (auto x : min_span_tree)
-    {
         cout << x.first << ' ' << x.second << endl;
-    }
 }
 
 int main(void)
