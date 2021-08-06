@@ -13,10 +13,7 @@ void dfs(int node)
     visited[node] = true;
     cout << node << ' ';
     for (auto x : adj[node])
-    {
         dfs(x);
-    }
-    return;
 }
 
 int main(void)
