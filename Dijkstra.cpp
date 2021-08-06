@@ -13,9 +13,7 @@ int determined[N] = {false};
 void Dijkstra(int x)
 {
     for (int i = 0; i < N; ++i)
-    {
         dist[i] = INF;
-    }
     dist[x] = 0;
     pq.push({-dist[x], x});
 
@@ -58,8 +56,6 @@ int main(void)
     Dijkstra(0);
     cout << "Dijkstra" << endl;
     for (int i = 0; i < N; ++i)
-    {
         cout << dist[i] << ' ';
-    }
     return 0;
 }
