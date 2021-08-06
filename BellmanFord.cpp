@@ -11,9 +11,7 @@ int dist[N];
 void BellmanFord(int x)
 {
     for (int i = 0; i < N; ++i)
-    {
         dist[i] = INF;
-    }
     dist[x] = 0;
     for (int i = 0; i < N - 1; ++i)
     {
@@ -53,8 +51,6 @@ int main(void)
     BellmanFord(0);
     cout << "BellmanFord" << endl;
     for (int i = 0; i < N; ++i)
-    {
         cout << dist[i] << ' ';
-    }
     return 0;
 }
