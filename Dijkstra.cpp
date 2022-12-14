@@ -6,39 +6,34 @@ using namespace std;
 const int N = 5;
 const int INF = 987654321;
 vector<pair<int, int>> adj[N];
-priority_queue<pair<int, int>> pq;
+priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
 int dist[N];
 int determined[N] = {false};
 
-void Dijkstra(int x)
-{
+void Dijkstra(int x) {
     for (int i = 0; i < N; ++i)
         dist[i] = INF;
     dist[x] = 0;
-    pq.push({-dist[x], x});
+    pq.push({dist[x], x});
 
-    while (!pq.empty())
-    {
-        int a = pq.top().second;
+    while (!pq.empty()) {
+        int cur = pq.top().second;
         pq.pop();
-        if (determined[a])
+        if (determined[cur])
             continue;
-        determined[a] = true;
-        for (auto aa : adj[a])
-        {
-            int b = aa.first;
-            int w = aa.second;
-            if (dist[b] > dist[a] + w)
-            {
-                dist[b] = dist[a] + w;
-                pq.push({-dist[b], b});
+        determined[cur] = true;
+        for (auto link : adj[cur]) {
+            int next = link.first;
+            int weight = link.second;
+            if (dist[next] > dist[cur] + weight) {
+                dist[next] = dist[cur] + weight;
+                pq.push({dist[next], next});
             }
         }
     }
 }
 
-int main(void)
-{
+int main(void) {
     adj[0].push_back({1, 2});
     adj[0].push_back({2, 3});
     adj[0].push_back({3, 7});
